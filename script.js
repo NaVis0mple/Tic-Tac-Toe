@@ -1,13 +1,9 @@
 // gameBoard
 const gameBoard = (() => {
-  const player1mark = 'Ｏ'
-  const player2mark = '✘'
-  // order
-  let playOrder = ['Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ']
+  const winstatus = document.querySelector('.win')
   const boardHtml = document.querySelectorAll('.mark')
-
+  let playOrder = ['Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ']
   const winrule = () => {
-    const winstatus = document.querySelector('.win')
     const block1 = document.getElementById('1').textContent
     const block2 = document.getElementById('2').textContent
     const block3 = document.getElementById('3').textContent
@@ -54,6 +50,17 @@ const gameBoard = (() => {
     }
   }
 
+  const reset = () => {
+    const button = document.querySelector('button')
+    button.addEventListener('click', () => {
+      playOrder = ['Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ']
+      boardHtml.forEach((block) => {
+        block.innerHTML = ''
+      })
+      winstatus.innerHTML = ''
+    })
+  }
+
   const markAction = () => {
     boardHtml.forEach((block) => {
       block.addEventListener('click', () => {
@@ -61,20 +68,14 @@ const gameBoard = (() => {
           block.innerHTML = playOrder[0]
           playOrder.shift()
           winrule()
+          reset()
         }
       })
     })
   }
 
-  const reset = () => {
-    playOrder = ['Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ', '✘', 'Ｏ']
-    boardHtml.forEach((block) => {
-      block.innerHTML = ''
-    })
-  }
   return {
-    markAction,
-    reset
+    markAction
   }
 })()
 
