@@ -1,3 +1,18 @@
-.red {
-    background-color: brown;
+html,
+.body {
+    box-sizing: border-box;
+    height: 100vh;
+}
+
+.gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(3, 150px);
+    background-color: gray;
+    width: fit-content;
+    margin: 200px auto;
+}
+
+.mark {
+    border: 1px solid black;
 }
