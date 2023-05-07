@@ -13,6 +13,7 @@ const gameBoard = (() => {
     const block7 = document.getElementById('7').textContent
     const block8 = document.getElementById('8').textContent
     const block9 = document.getElementById('9').textContent
+    if (winstatus.innerHTML!=='') return
     if (block1 === block2 && block2 === block3 && block1 !== '') {
       winstatus.innerHTML = (`${block1} win`)
       return
